@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  users_db:
+    image: postgres:15
+    container_name: users_db
+    restart: always
+    environment:
+      POSTGRES_DB: users_db
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+    volumes:
+      - users_db_data:/var/lib/postgresql/data
+
+  flights_db:
+    image: postgres:15
+    container_name: flights_db
+    restart: always
+    environment:
+      POSTGRES_DB: flights_db
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5433:5432"
+    volumes:
+      - flights_db_data:/var/lib/postgresql/data
+
+  reservations_db:
+    image: postgres:15
+    container_name: reservations_db
+    restart: always
+    environment:
+      POSTGRES_DB: reservations_db
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5434:5432"
+    volumes:
+      - reservations_db_data:/var/lib/postgresql/data
+
+volumes:
+  users_db_data:
+  flights_db_data:
+  reservations_db_data:
